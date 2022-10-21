@@ -1,0 +1,11 @@
+python-docx
+requests
+gophish
+configparser
+python-dateutil
+user-agents
+click
+xlsxwriter
+matplotlib
+seaborn
+python-nmap
