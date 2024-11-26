@@ -1,3 +1,10 @@
 *.DS_Store
 *.pyc
 *.config
+*.docx
+*.xlsx
+.venv
+
+#Unignore
+!Gophish Results for Demo Campaign_HSMW.docx
+

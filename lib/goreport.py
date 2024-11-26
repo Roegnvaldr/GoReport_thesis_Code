@@ -1472,6 +1472,16 @@ Gespeicherte Passwörter: {capturing_passwords}
         print("[+] Detailed results analysis is next and may take some time if you had a lot of targets...")
         add_heading("Detaillierte Ergebnisse")
         target_counter = 0
+        # Abfrage ob nmap sacn durchgeführt werden soll 
+        ncheck = input("Soll ein nmap Scan erfolgen? y/n \n ")
+        if ncheck == "n":
+            ncheck = 0
+        elif ncheck == "y":
+            ncheck = 1
+        else:
+            print("fehlerhafte Eingabe Programm wird geschlossen")
+            exit()
+
         for target in self.results:
             # Only create a Detailed Analysis section for targets with clicks
             if target.email in self.targets_clicked:
@@ -1718,9 +1728,10 @@ Gespeicherte Passwörter: {capturing_passwords}
                             target.ip, event.details['browser']['address'], self.verbose)
 
                         # Proof if valid IP-Adress
-                        if re.match(r'((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$', ip_addr):
-                            print(f"[+] Start Port Scanning: {ip_addr}")
-                            portscan(ip_addr)
+                        if ncheck == 1:
+                            if re.match(r'((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$', ip_addr):
+                                print(f"[+] Start Port Scanning: {ip_addr}")
+                                portscan(ip_addr)
 
 
 
